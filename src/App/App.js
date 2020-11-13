@@ -39,7 +39,7 @@ function App() {
       {geoLocation && 
         <div>
           <p>Latitude: {geoLocation?.lat && geoLocation.lat}</p>
-          <p>Longitude: {geoLocation?.lat && geoLocation.lat}</p>
+          <p>Longitude: {geoLocation?.long && geoLocation.long}</p>
         </div>
       }
     </div>
