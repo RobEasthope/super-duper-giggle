@@ -47,9 +47,11 @@ function App() {
     }
   }, [geoLocation]);
 
+  const kelvinToCelcius = (kelvin) => kelvin - 273.15;
+
   return (
     // Component specific styles (bit reduntant in this but habits...)
-    <Styles temperature={weatherData?.main?.temp || null}>
+    <Styles temperature={kelvinToCelcius(weatherData?.main?.temp) || null}>
       {/* Rebass styles primative to centre content */}
       <Flex width={1} className="wrapper">
         {/* Permissions messaging requiring a manual button click each time (should be linked to Geolocation permissions but time is short) */}
