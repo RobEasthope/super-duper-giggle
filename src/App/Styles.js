@@ -1,16 +1,21 @@
 import styled from 'styled-components';
 
 function bkgColour(temperature) {
-    if(temperature <= -10){
-      return '#00ffff';} else if (temperature === 10)
-      {return '#fff700';} else if(temperature >= 30){
-      return '#ff8c00';} else {
-    
-      return 'white'}
+  if (temperature <= -10) {
+    return '#00ffff';
+  }
+  if (temperature === 10) {
+    return '#fff700';
+  }
+  if (temperature >= 30) {
+    return '#ff8c00';
+  }
+
+  return 'white';
 }
 
 export const Styles = styled.div`
-  background-color: ${props => bkgColour(props.temperature)};
+  background-color: ${(props) => bkgColour(props.temperature)};
 
   .wrapper {
     min-height: 100vh;
