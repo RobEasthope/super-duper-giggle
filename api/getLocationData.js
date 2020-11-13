@@ -10,6 +10,6 @@ export default async (req, res) => {
     console.log(JSON.parse(locationData));
 
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({ error: 'Metaweather API arror' });
   }
 };
