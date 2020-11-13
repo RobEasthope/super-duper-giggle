@@ -2,6 +2,8 @@
 import { fetchApiData} from '../src/utils/fetchApiData';
 
 export default async (req, res) => {
+  console.log(req.body);
+
   try {
     const locationData = await fetchApiData('https://www.metaweather.com/api/location/search/?lattlong=36.96,-122.02');
     res.status(200).json(locationData);
