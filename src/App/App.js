@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 
 function App() {
-  const [geoLocationPermission, setGeoLocationPermission] = useState();
-  const [geoLocation, setGeoLocation] = useState();
+  const [geoLocationPermission, setGeoLocationPermission] = useState(false);
+  const [geoLocation, setGeoLocation] = useState(false);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -22,11 +22,17 @@ function App() {
 
   return (
     <div>
-      {!geoLocationPermission && <button onClick={handlePermissionsClick}>Grant geolocation permission</button>}
-      <div>
-        <p>Latitude: {geoLocation?.lat && geoLocation.lat}</p>
-        <p>Longitude: {geoLocation?.lat && geoLocation.lat}</p>
-      </div>
+      {!geoLocationPermission && <div>
+        <p>This app uses the Geolocation API built into your browser. Are happy to grant the necessary permissions to use it?</p>
+        <button onClick={handlePermissionsClick}>Allow</button>
+        </div>
+      }
+      {geoLocation && 
+        <div>
+          <p>Latitude: {geoLocation?.lat && geoLocation.lat}</p>
+          <p>Longitude: {geoLocation?.lat && geoLocation.lat}</p>
+        </div>
+      }
     </div>
   );
 }
