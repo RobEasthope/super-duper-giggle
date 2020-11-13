@@ -16,6 +16,8 @@ function bkgColour(temperature) {
 
 export const Styles = styled.div`
   background-color: ${(props) => bkgColour(props.temperature)};
+  transition: background-color 1s;
+
   text-align: center;
 
   .wrapper {
