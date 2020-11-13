@@ -35,7 +35,7 @@ function App() {
   }
 
   return (
-    <Styles>
+    <Styles temperature={weatherData?.main?.temp}>
       <Flex className="wrapper" alignItems="center">
 
       {!geoLocationPermission && (
