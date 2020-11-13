@@ -75,12 +75,15 @@ function App() {
         )}
 
         {/* Show weather icon */}
-        {weatherData?.weather && (
-          <img
-            src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png` || null}
-            className="weather-icon"
-            alt={weatherData?.weather[0]?.main || ''}
-          />
+        {weatherData?.weather && weatherData?.main && (
+          <Box width={1}>
+            <img
+              src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png` || null}
+              className="weather-icon"
+              alt={weatherData?.weather[0]?.main || ''}
+            />
+            <h2>{kelvinToCelcius(weatherData?.main?.temp)}</h2>
+          </Box>
         )}
       </Flex>
     </Styles>
