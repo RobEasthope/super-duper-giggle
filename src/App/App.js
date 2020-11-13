@@ -1,6 +1,8 @@
-import { useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 function App() {
+  const [geoLocationPermission, setGeoLocationPermission] = useState();
+
   useEffect(() => {
     if ("geolocation" in navigator) {
       console.log("Available");
@@ -9,9 +11,14 @@ function App() {
     }
   }, [])
 
+  const handlePermissionsClick = () => {
+    setGeoLocationPermission(true);
+  }
+
   return (
     <div>
-      <h1>Foo</h1>
+      {!geoLocationPermission && <button onClick={handlePermissionsClick}>Grant geolocation permission</button>}
+      foo
     </div>
   );
 }
