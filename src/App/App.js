@@ -5,8 +5,16 @@ function App() {
   const [geoLocation, setGeoLocation] = useState(false);
 
   useEffect(() => {
-    
-  }, [])
+    fetch(`https://www.metaweather.com/api/location/search/?lattlong=36.96,-122.02`, {
+      credentials: 'include'
+    }).then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [geoLocation])
 
   const handlePermissionsClick = () => {
     setGeoLocationPermission(true);
