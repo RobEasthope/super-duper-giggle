@@ -41,7 +41,7 @@ function App() {
   return (
     <div>
       {!geoLocationPermission && <div>
-        <p>This app uses the Geolocation API built into your browser. Are happy to grant the necessary permissions to use it?</p>
+        <p>This app uses the Geolocation API built into your browser. Are you happy to grant the necessary permissions to use it?</p>
         <button onClick={handlePermissionsClick}>Allow</button>
         </div>
       }
