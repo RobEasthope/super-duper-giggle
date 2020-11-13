@@ -1,4 +1,7 @@
 import {useState, useEffect} from 'react';
+import { Flex, Box } from 'reflexbox';
+
+import {Styles} from './Styles';
 
 function App() {
   const [geoLocationPermission, setGeoLocationPermission] = useState(false);
@@ -32,20 +35,27 @@ function App() {
   }
 
   return (
-    <div>
-      {!geoLocationPermission && <div>
-        <p>This app uses the Geolocation API built into your browser. Are you happy to grant the necessary permissions to use it?</p>
-        <button onClick={handlePermissionsClick}>Allow</button>
-        </div>
+    <Styles>
+      <Flex className="wrapper" alignItems="center">
+
+      {!geoLocationPermission && (
+        <Box className="permissions-msg">
+          <p>This app uses the Geolocation API built into your browser. Are you happy to grant the necessary permissions to use it?</p>
+          <button onClick={handlePermissionsClick}>Allow</button>
+        </Box>
+        )
       }
       {geoLocationPermission && geoLocation && 
-        <div>
+      <>
         {weatherData ? 
-          <img src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`} alt={weatherData?.weather[0]?.main || ''} /> : <div>Loading weather data</div>
+            <img src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`} className="weather-icon" alt={weatherData?.weather[0]?.main || ''} />
+             : <Box>Loading weather data</Box>
           }
-        </div>
+          </>
       }
-    </div>
+        </Flex>
+
+    </Styles>
   );
 }
 
