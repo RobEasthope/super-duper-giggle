@@ -82,7 +82,7 @@ function App() {
               className="weather-icon"
               alt={weatherData?.weather[0]?.main || ''}
             />
-            <h2>{kelvinToCelcius(weatherData?.main?.temp)}</h2>
+            <h2>{kelvinToCelcius(weatherData?.main?.temp)}°C</h2>
           </Box>
         )}
       </Flex>
