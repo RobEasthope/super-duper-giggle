@@ -67,9 +67,9 @@ function App() {
         {/* Show weather icon and loading messaging */}
         {geoLocationPermission && geoLocation && (
           <>
-            {weatherData ? (
+            {weatherData?.weather ? (
               <img
-                src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`}
+                src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png` || null}
                 className="weather-icon"
                 alt={weatherData?.weather[0]?.main || ''}
               />
