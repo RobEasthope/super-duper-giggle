@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 
 function App() {
   const [geoLocationPermission, setGeoLocationPermission] = useState();
+  const [geoLocation, setGeoLocation] = useState();
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -13,6 +14,10 @@ function App() {
 
   const handlePermissionsClick = () => {
     setGeoLocationPermission(true);
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setGeoLocation({ lat: position.coords.latitude, long: position.coords.longitude});
+    });
   }
 
   return (
