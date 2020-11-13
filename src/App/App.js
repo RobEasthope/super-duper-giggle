@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 function App() {
   const [geoLocationPermission, setGeoLocationPermission] = useState(false);
   const [geoLocation, setGeoLocation] = useState(false);
-  const [iconId, setIconID] = useState();
+  const [weatherData, setWeatherData] = useState(null);
 
   const OPEN_WEATHER_API_KEY = '1cf032daa82e9bca954d4b5dee8dc6d1';
 
@@ -11,7 +11,8 @@ function App() {
     if (geoLocation){
       fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoLocation.lat}&lon=${geoLocation.long}&appid=${OPEN_WEATHER_API_KEY}`, ).then(response => response.json())
         .then(data => {
-          setIconID(data?.weather[0]?.icon)
+          console.log(data);
+          setWeatherData(data)
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -37,12 +38,10 @@ function App() {
         <button onClick={handlePermissionsClick}>Allow</button>
         </div>
       }
-      {geoLocation && 
+      {geoLocationPermission && geoLocation && 
         <div>
-          <p>Latitude: {geoLocation?.lat && geoLocation.lat}</p>
-          <p>Longitude: {geoLocation?.long && geoLocation.long}</p>
-          {iconId && 
-            <img src={`http://openweathermap.org/img/wn/${iconId}@2x.png`} alt="Icon" />
+        {weatherData ? 
+          <img src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`} alt={weatherData?.weather[0]?.main || ''} /> : <div>Loading weather data</div>
           }
         </div>
       }
