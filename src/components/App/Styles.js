@@ -16,15 +16,13 @@ function bkgColour(temperature) {
 
 export const Styles = styled.div`
   background-color: ${(props) => bkgColour(props.temperature)};
+  text-align: center;
 
   .wrapper {
+    align-items: center;
     min-height: 100vh;
     max-width: 40em;
     margin: 0 auto;
-  }
-
-  .permissions-msg {
-    text-align: center;
   }
 
   .weather-icon {
