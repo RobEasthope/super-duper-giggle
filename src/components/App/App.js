@@ -51,7 +51,7 @@ function App() {
     // Component specific styles (bit reduntant in this but habits...)
     <Styles temperature={weatherData?.main?.temp || null}>
       {/* Rebass styles primative to centre content */}
-      <Flex className="wrapper">
+      <Flex width={1} className="wrapper">
         {/* Permissions messaging requiring a manual button click each time (should be linked to Geolocation permissions but time is short) */}
         {!geoLocationPermission && (
           <Box>
@@ -74,7 +74,7 @@ function App() {
                 alt={weatherData?.weather[0]?.main || ''}
               />
             ) : (
-              <Box>Loading weather data</Box>
+              <Box width={1}>Loading weather data</Box>
             )}
           </>
         )}
