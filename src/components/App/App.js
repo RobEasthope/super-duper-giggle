@@ -4,6 +4,8 @@ import { Flex, Box } from 'reflexbox';
 
 import { Styles } from './Styles';
 
+import { kelvinToCelcius } from '../../utils/kelvinToCelcius';
+
 function App() {
   // Set state
   const [geoLocationPermission, setGeoLocationPermission] = useState(false);
@@ -46,8 +48,6 @@ function App() {
         });
     }
   }, [geoLocation]);
-
-  const kelvinToCelcius = (kelvin) => Math.round(kelvin - 273.15);
 
   return (
     // Component specific styles (bit reduntant in this but habits...)
