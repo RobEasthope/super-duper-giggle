@@ -64,19 +64,21 @@ function App() {
             </button>
           </Box>
         )}
-        {/* Show weather icon and loading messaging */}
-        {geoLocationPermission && geoLocation && (
+
+        {/* Loading messaging */}
+        {geoLocationPermission && !weatherData && (
           <>
-            {weatherData?.weather ? (
-              <img
-                src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png` || null}
-                className="weather-icon"
-                alt={weatherData?.weather[0]?.main || ''}
-              />
-            ) : (
-              <Box width={1}>Loading weather data</Box>
-            )}
+            <Box width={1}>Loading location & weather data</Box>
           </>
+        )}
+
+        {/* Show weather icon */}
+        {weatherData?.weather && (
+          <img
+            src={`http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png` || null}
+            className="weather-icon"
+            alt={weatherData?.weather[0]?.main || ''}
+          />
         )}
       </Flex>
     </Styles>
