@@ -47,7 +47,7 @@ function App() {
     }
   }, [geoLocation]);
 
-  const kelvinToCelcius = (kelvin) => kelvin - 273.15;
+  const kelvinToCelcius = (kelvin) => Math.round(kelvin - 273.15);
 
   return (
     // Component specific styles (bit reduntant in this but habits...)
