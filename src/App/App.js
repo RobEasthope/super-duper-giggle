@@ -23,7 +23,10 @@ function App() {
   return (
     <div>
       {!geoLocationPermission && <button onClick={handlePermissionsClick}>Grant geolocation permission</button>}
-      foo
+      <div>
+        <p>Latitude: {geoLocation?.lat && geoLocation.lat}</p>
+        <p>Longitude: {geoLocation?.lat && geoLocation.lat}</p>
+      </div>
     </div>
   );
 }
