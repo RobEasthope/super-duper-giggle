@@ -5,19 +5,18 @@ function App() {
   const [geoLocation, setGeoLocation] = useState(false);
 
   useEffect(() => {
-    if ("geolocation" in navigator) {
-      console.log("Available");
-    } else {
-      console.log("Not Available");
-    }
+    
   }, [])
 
   const handlePermissionsClick = () => {
     setGeoLocationPermission(true);
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-      setGeoLocation({ lat: position.coords.latitude, long: position.coords.longitude});
-    });
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setGeoLocation({ lat: position.coords.latitude, long: position.coords.longitude });
+      });
+    } else {
+      console.log("Geo location Available");
+    }
   }
 
   return (
