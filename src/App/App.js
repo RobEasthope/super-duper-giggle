@@ -6,9 +6,18 @@ function App() {
 
   useEffect(() => {
     if (geoLocation){
-      fetch(`/api/getLocationData`, {
-        credentials: 'include'
-      }).then(response => response.json())
+      const payload = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          lat: geoLocation.lat,
+          long: geoLocation.long,
+        }),
+      };
+      
+      fetch(`/api/getLocationData`, payload).then(response => response.json())
         .then(data => {
           console.log('Success:', data);
         })
