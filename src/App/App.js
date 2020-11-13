@@ -4,20 +4,11 @@ function App() {
   const [geoLocationPermission, setGeoLocationPermission] = useState(false);
   const [geoLocation, setGeoLocation] = useState(false);
 
+  const OPEN_WEATHER_API_KEY = '1cf032daa82e9bca954d4b5dee8dc6d1';
+
   useEffect(() => {
     if (geoLocation){
-      const payload = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          lat: geoLocation.lat,
-          long: geoLocation.long,
-        }),
-      };
-      
-      fetch(`/api/getLocationData`, payload).then(response => response.json())
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoLocation.lat}&lon=${geoLocation.long}&appid=${OPEN_WEATHER_API_KEY}`, ).then(response => response.json())
         .then(data => {
           console.log('Success:', data);
         })
