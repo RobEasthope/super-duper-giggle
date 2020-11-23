@@ -13,7 +13,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
 
   // Should *not* be set in code but it's technical test with own key that'll be deleted next week
-  const OPEN_WEATHER_API_KEY = '1cf032daa82e9bca954d4b5dee8dc6d1';
+  const OPEN_WEATHER_API_KEY = '';
 
   const handlePermissionsClick = () => {
     // Set to true to remove UI
